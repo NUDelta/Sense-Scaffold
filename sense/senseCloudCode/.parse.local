@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "Low Effort Sensing": {
+      "applicationId": "uG9WYyFl6dfBHXoHc7arEN5lFYEzz59BK03AxB4t"
+    },
+    "_default": {
+      "link": "Low Effort Sensing"
+    }
+  }
+}

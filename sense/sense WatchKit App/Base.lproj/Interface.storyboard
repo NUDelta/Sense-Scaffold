@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="sense_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" text="Sense" id="uqy-i2-4rh">
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <button width="1" alignment="left" title="Food" id="jmv-Um-bjm">
+                            <connections>
+                                <action selector="reportFood" destination="AgC-eL-Hgc" id="ve2-2L-xmi"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" id="abR-Ah-I9r"/>
+                        <button width="1" alignment="left" title="Search" id="l7Y-Jf-Rrs">
+                            <connections>
+                                <action selector="searchLocations" destination="AgC-eL-Hgc" id="VJt-vo-O9Y"/>
+                            </connections>
+                        </button>
+                        <label alignment="left" id="zkk-jg-9OP"/>
+                        <button width="1" alignment="left" title="fetch questions" id="xTg-8M-WI8">
+                            <connections>
+                                <action selector="tempFetchQn" destination="AgC-eL-Hgc" id="28B-Kh-Fai"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="numHotspotsLabel" destination="zkk-jg-9OP" id="beO-a1-OdM"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="235" y="681"/>
+        </scene>
+        <!--getInfoController-->
+        <scene sceneID="D7I-E1-T3L">
+            <objects>
+                <controller identifier="getInfoController" hidesWhenLoading="NO" id="aDA-Vh-RBe" customClass="GetInfoInterfaceController" customModule="sense_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="Hotspot ID" textAlignment="left" id="tfa-D7-4tF"/>
+                        <separator alignment="left" id="4cX-Wr-3FQ"/>
+                        <label alignment="left" text="Label" numberOfLines="3" id="qB6-ka-xMG"/>
+                        <button width="1" alignment="left" title="Question1" id="27I-U2-SGJ">
+                            <connections>
+                                <action selector="question1ButtonAction" destination="aDA-Vh-RBe" id="Jis-IM-W8h"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Question2" id="gvE-bW-TyU">
+                            <connections>
+                                <action selector="question2ButtonAction" destination="aDA-Vh-RBe" id="KQD-Tk-Pfr"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Question3" id="Nat-NW-ddl">
+                            <connections>
+                                <action selector="question3ButtonAction" destination="aDA-Vh-RBe" id="nGt-l7-GT4"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="hotspotIDLabel" destination="tfa-D7-4tF" id="dvp-x5-otE"/>
+                        <outlet property="infoLabel" destination="qB6-ka-xMG" id="XxC-cn-twi"/>
+                        <outlet property="question1button" destination="27I-U2-SGJ" id="rfc-OH-Aor"/>
+                        <outlet property="question2button" destination="gvE-bW-TyU" id="579-w0-cnS"/>
+                        <outlet property="question3button" destination="Nat-NW-ddl" id="crm-qY-v06"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="534" y="681.5"/>
+        </scene>
+        <!--QuestionController-->
+        <scene sceneID="mHE-GV-tjr">
+            <objects>
+                <controller identifier="QuestionController" hidesWhenLoading="NO" id="2sJ-tW-yaO" customClass="AnswerInterfaceController" customModule="sense_WatchKit_Extension">
+                    <items>
+                        <label alignment="center" text="Answers" id="MBk-yr-FN8"/>
+                        <separator alignment="left" id="yR2-b8-vej"/>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="765" y="681"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="BOz-TT-tkC">
+            <objects>
+                <glanceController spacing="0.0" id="0uZ-2p-rRc" customClass="GlanceController" customModule="sense_WatchKit_App" customModuleProvider="target">
+                    <items>
+                        <group alignment="left" id="t8f-Gd-c4y"/>
+                        <group alignment="left" id="uCw-4Q-Ouw"/>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="798" y="992"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="XkS-y5-khE"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="XkS-y5-khE" id="49B-RR-99y"/>
+                        <segue destination="gdX-wl-uQE" kind="relationship" relationship="dynamicNotificationInterface" id="fKh-qV-3T2"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="235" y="1001"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="KIl-fV-djm">
+            <objects>
+                <controller id="gdX-wl-uQE" customClass="NotificationController" customModule="sense_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="553" y="1001"/>
+        </scene>
+    </scenes>
+</document>
