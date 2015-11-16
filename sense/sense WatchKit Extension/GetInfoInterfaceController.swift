@@ -168,6 +168,7 @@ class GetInfoInterfaceController: WKInterfaceController,WCSessionDelegate {
         if(completedInfoDict.count == 0){
             infoLabel.setHidden(true)
         }else{
+            infoLabel.setHidden(false)
             var info = ""
             for (key, val) in completedInfoDict {
                 info += key + ": " + val + "\n"

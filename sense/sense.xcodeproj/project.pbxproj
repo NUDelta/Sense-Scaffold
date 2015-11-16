@@ -13,8 +13,6 @@
 		932615071BCCA03000600A9B /* HotspotClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932615031BCCA03000600A9B /* HotspotClass.swift */; };
 		937CF8B01BD73DA2002DCBD3 /* GetInfoInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937CF8AE1BD73DA2002DCBD3 /* GetInfoInterfaceController.swift */; };
 		937CF8B21BD74CEF002DCBD3 /* AnswerInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937CF8B11BD74CEF002DCBD3 /* AnswerInterfaceController.swift */; };
-		938C15591BE412CD004339E7 /* deltasymbol.png in Resources */ = {isa = PBXBuildFile; fileRef = 938C15581BE412CD004339E7 /* deltasymbol.png */; };
-		938C155A1BE412CD004339E7 /* deltasymbol.png in Resources */ = {isa = PBXBuildFile; fileRef = 938C15581BE412CD004339E7 /* deltasymbol.png */; };
 		93D32E7B1BC049ED003840B8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D32E7A1BC049ED003840B8 /* AppDelegate.swift */; };
 		93D32E7D1BC049ED003840B8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D32E7C1BC049ED003840B8 /* ViewController.swift */; };
 		93D32E801BC049ED003840B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93D32E7E1BC049ED003840B8 /* Main.storyboard */; };
@@ -117,7 +115,6 @@
 		932615031BCCA03000600A9B /* HotspotClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotspotClass.swift; path = sense/HotspotClass.swift; sourceTree = "<group>"; };
 		937CF8AE1BD73DA2002DCBD3 /* GetInfoInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetInfoInterfaceController.swift; path = "sense WatchKit Extension/GetInfoInterfaceController.swift"; sourceTree = SOURCE_ROOT; };
 		937CF8B11BD74CEF002DCBD3 /* AnswerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerInterfaceController.swift; sourceTree = "<group>"; };
-		938C15581BE412CD004339E7 /* deltasymbol.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = deltasymbol.png; path = ../deltasymbol.png; sourceTree = "<group>"; };
 		93D32E771BC049ED003840B8 /* sense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sense.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93D32E7A1BC049ED003840B8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93D32E7C1BC049ED003840B8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -226,7 +223,6 @@
 			isa = PBXGroup;
 			children = (
 				932615031BCCA03000600A9B /* HotspotClass.swift */,
-				938C15581BE412CD004339E7 /* deltasymbol.png */,
 				93D32F071BC04B3C003840B8 /* libsqlite3.tbd */,
 				93D32F051BC04B36003840B8 /* libz.tbd */,
 				93D32EFF1BC04B2F003840B8 /* CoreGraphics.framework */,
@@ -498,7 +494,6 @@
 			files = (
 				93D32E851BC049ED003840B8 /* LaunchScreen.storyboard in Resources */,
 				93D32E821BC049ED003840B8 /* Assets.xcassets in Resources */,
-				938C15591BE412CD004339E7 /* deltasymbol.png in Resources */,
 				93D32E801BC049ED003840B8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -530,7 +525,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				938C155A1BE412CD004339E7 /* deltasymbol.png in Resources */,
 				93D32EC01BC049ED003840B8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

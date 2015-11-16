@@ -12,7 +12,7 @@ import Foundation
 //import Bolts
 import WatchConnectivity
 
-
+let savedHotspotsRegionKey = "savedMonitoredHotspots" // for saving the fetched locations to NSUserDefaults
 
 class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSessionDelegate {
     
@@ -224,7 +224,21 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         }
     }
     
-    
-    
+    //MARK: handle notifications method
+    override func handleActionWithIdentifier(identifier: String?, forLocalNotification localNotification: UILocalNotification) {
+        switch(identifier!){
+        case "INVESTIGATE_EVENT_IDENTIFIER":
+            print("triggered watch notification with investigate action")
+            //NEED TO CHECK FOR NULL VALUES
+            var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? [:]
+            let questionArray = monitoredHotspotDictionary["questionArr"]
+            
+            pushControllerWithName("getInfoController", context: [])
+            break
+        default:
+            break
+        }
+    }
+        
 
 }

@@ -23,7 +23,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         Parse.setApplicationId("uG9WYyFl6dfBHXoHc7arEN5lFYEzz59BK03AxB4t",
             clientKey: "uX6ZXOLDfcggZhIpKreVqojACXbq470vZ2J8p49i")
         
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil))  // types are UIUserNotificationType members
+        //MARK: notifications code
+        var categories = Set<UIUserNotificationCategory>()
+        
+        let investigateHotspotAction = UIMutableUserNotificationAction()
+        investigateHotspotAction.title = NSLocalizedString("Investigate", comment: "investigate event")
+        investigateHotspotAction.identifier = "INVESTIGATE_EVENT_IDENTIFIER"
+        investigateHotspotAction.activationMode = UIUserNotificationActivationMode.Foreground
+        investigateHotspotAction.authenticationRequired = false
+        
+        let investigateCategory = UIMutableUserNotificationCategory()
+        investigateCategory.setActions([investigateHotspotAction],
+            forContext: UIUserNotificationActionContext.Default)
+        investigateCategory.identifier = "INVESTIGATE_CATEGORY"
+        
+        categories.insert(investigateCategory)
+    
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: categories))  // types are UIUserNotificationType members
         //UIApplication.sharedApplication().cancelAllLocalNotifications()
         
         appLocationManager.delegate = self
@@ -75,6 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let notification = UILocalNotification()
             notification.alertBody = "\(tag) detected with id \(identifier)"
             notification.soundName = "Default"
+            notification.category = "INVESTIGATE_CATEGORY"
             UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         }
     }

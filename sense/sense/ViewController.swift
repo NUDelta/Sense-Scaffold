@@ -10,6 +10,7 @@ import UIKit
 import WatchConnectivity
 import Parse
 import CoreLocation
+import Foundation
 
 let savedHotspotsRegionKey = "savedMonitoredHotspots" // for saving the fetched locations to NSUserDefaults
 
@@ -18,11 +19,16 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
     let watchSession = WCSession.defaultSession()
     let appLocManager = CLLocationManager()
     
-    @IBOutlet weak var debuglabel: UILabel!
+    @IBOutlet weak var debugText: UITextView!
+    
+    @IBAction func clearGeofences(sender: AnyObject) {
+        stopMonitoringAllHotspots()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("view controller on iPhone")
+        self.debugText.text = self.debugText.text + "started App view did load on iPhone"
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -172,6 +178,8 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                 ])
             
             case "fetchQuestions":
+                //stopMonitoringAllHotspots()
+                
                 PFGeoPoint.geoPointForCurrentLocationInBackground {
                     (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
                     if error == nil {
@@ -182,7 +190,8 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                                 let retArr = (arr as! NSArray) as Array
                                 
                                 var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
-                                
+                                //reset dictionary
+                                //var monitoredHotspotDictionary = [String:Dictionary<String,AnyObject>]()
                                 
                                 for entry in retArr{
                                     let unwrappedEntry = entry as! Dictionary<String,AnyObject>
@@ -193,10 +202,12 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                                     let date = unwrappedEntry["date"] as! NSDate
                                     let hotspot = Hotspot(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), tag: tag, timeCreated: date, id: identifier)
                                     print (entry)
+                                    self.debugText.text = self.debugText.text + "starting to monitor " + identifier
                                     self.startMonitoringHotspot(hotspot)
                                     monitoredHotspotDictionary[identifier] = unwrappedEntry
                                 }
                                 
+                                monitoredHotspotDictionary["questionArr"] = arr
                                 NSUserDefaults.standardUserDefaults().setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
                                 
                                 replyHandler(["missingInfo": arr ])
@@ -234,9 +245,20 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
         }
     }
     
+    func stopMonitoringAllHotspots() {
+        for region in appLocManager.monitoredRegions {
+            if let circularRegion = region as? CLCircularRegion {
+                    appLocManager.stopMonitoringForRegion(circularRegion)
+            }
+        }
+    }
+    
 
     
     func getNearbyHotspots(){
+        //reset everything
+        //stopMonitoringAllHotspots()
+        
         PFGeoPoint.geoPointForCurrentLocationInBackground {
             (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
             if error == nil {
@@ -247,6 +269,8 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                         let retArr = (arr as! NSArray) as Array
                         
                         var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
+                        //reset dictionary
+                        //var monitoredHotspotDictionary = [String:Dictionary<String,AnyObject>]()
                         
                         for entry in retArr{
                             let unwrappedEntry = entry as! Dictionary<String,AnyObject>
@@ -256,10 +280,13 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                             let tag = unwrappedEntry["tag"] as? String ?? ""
                             let date = unwrappedEntry["date"] as! NSDate
                             let hotspot = Hotspot(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), tag: tag, timeCreated: date, id: identifier)
+                            self.debugText.text = self.debugText.text + "starting to monitor " + identifier + " in function getNearbyHotspots"
                             print (entry)
+                            
                             self.startMonitoringHotspot(hotspot)
                             monitoredHotspotDictionary[identifier] = unwrappedEntry
                         }
+                        monitoredHotspotDictionary["questionArr"] = arr
                         NSUserDefaults.standardUserDefaults().setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
                     }
                 )
@@ -275,15 +302,28 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("location manager failed in view controller")
+        debugText.text = debugText.text + "location manager failed in view controller";
     }
     
     func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
         print("location manager failed to monitor for region with error \(error)")
+        debugText.text = debugText.text + "location manager failed to monitor for region with error \(error)";
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        getNearbyHotspots()
+        //getNearbyHotspots()
     }
+    
+    
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        debugText.text = debugText.text + " entered Region "
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        debugText.text = debugText.text + " exited Region "
+    }
+
+
 }
 
 
