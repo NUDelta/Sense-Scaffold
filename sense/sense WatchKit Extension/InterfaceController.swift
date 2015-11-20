@@ -116,7 +116,7 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         locManager.delegate = self
         watchSession.delegate=self
         watchSession.activateSession()
-        
+        printToIPhone("awake with context method called")
         // Configure interface objects here.
     }
 
@@ -133,6 +133,7 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         isRequestingLocation = false
         isSearchingLocations = false
         //reportLocation()
+        printToIPhone("will activate method called")
     }
 
     override func didDeactivate() {
@@ -259,7 +260,9 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         case "INVESTIGATE_EVENT_IDENTIFIER":
             //print("triggered watch notification with investigate action")
             
-            //let hotspotID = localNotification.userInfo!["hotspotID"] as! String
+            let hotspotID = localNotification.userInfo!["hotspotID"] as! String
+            printToIPhone("handle action with identifier with \(hotspotID)")
+            
             //watchSession.delegate=self
             //watchSession.activateSession()
             //fetchQuestionsForInstance(hotspotID)
