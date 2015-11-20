@@ -74,7 +74,12 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         fetchQuestions();
     }
     
+    @IBAction func tmpFetchInstance() {
+        fetchQuestionsForInstance("wRObQ6T9eq");
+    }
+
     func reportLocation() {
+        printToIPhone("reporting location from watch")
         //to prevent multiple reports of location
         if (isRequestingLocation) {
             locManager.stopUpdatingLocation()
@@ -106,6 +111,7 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
     // MARK: Initialization
     
     override func awakeWithContext(context: AnyObject?) {
+        
         super.awakeWithContext(context)
         locManager.delegate = self
         watchSession.delegate=self
@@ -114,8 +120,10 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         // Configure interface objects here.
     }
 
+    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
+        
         super.willActivate()
         locManager.delegate = self
         watchSession.delegate=self
@@ -124,7 +132,7 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         mostRecentTag = ""
         isRequestingLocation = false
         isSearchingLocations = false
-        reportLocation()
+        //reportLocation()
     }
 
     override func didDeactivate() {
@@ -171,6 +179,27 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
             print("reply handler called for fetch questions")
             }, errorHandler: {error in
                 print("error in fetching questions \(error)")})
+    }
+    
+    func fetchQuestionsForInstance(hotspotID: String){
+        let message = ["command": "fetchQuestionsForInstance", "hotspotID": hotspotID]
+        print(message)
+        watchSession.sendMessage(message, replyHandler: {replyDictionary in
+            print(replyDictionary)
+            guard let questionArray = replyDictionary["missingInfo"] as! Array<Dictionary<String,AnyObject>>? else {return}
+            print(questionArray)
+            self.presentControllerWithName("getInfoController", context: questionArray)
+            print("reply handler called for fetch questions for instance")
+            }, errorHandler: {error in
+                print("error in fetching questions for instance\(error)")})
+    }
+    
+    func printToIPhone(text: String){
+        let message = ["command": "printToIPhone", "text": text]
+        watchSession.sendMessage(message, replyHandler: {replyDictionary in
+            print(replyDictionary)
+            }, errorHandler: {error in
+                print("error in printing text \(error)")})
     }
     
     //MARK: Location Manager Delegate methods:
@@ -228,17 +257,31 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
     override func handleActionWithIdentifier(identifier: String?, forLocalNotification localNotification: UILocalNotification) {
         switch(identifier!){
         case "INVESTIGATE_EVENT_IDENTIFIER":
-            print("triggered watch notification with investigate action")
-            //NEED TO CHECK FOR NULL VALUES
-            var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? [:]
-            let questionArray = monitoredHotspotDictionary["questionArr"]
+            //print("triggered watch notification with investigate action")
             
-            pushControllerWithName("getInfoController", context: [])
+            //let hotspotID = localNotification.userInfo!["hotspotID"] as! String
+            //watchSession.delegate=self
+            //watchSession.activateSession()
+            //fetchQuestionsForInstance(hotspotID)
+            
+            presentControllerWithName("getInfoController", context: [])
+            //printToIPhone("handling notification for \(hotspotID)")
+            //fetchQuestionsForInstance(hotspotID)
+            /*
+            var monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? [:]
+            printToIPhone("handling notification from watch!!")
+            printToIPhone("handling notification for \(hotspotID)")
+            printToIPhone("\(monitoredHotspotDictionary)")
+                
+            guard let questionArray = monitoredHotspotDictionary[hotspotID] as! Dictionary<String,AnyObject>? else {printToIPhone("could not cast questionArray for \(hotspotID)"); return;}
+            //let questionArray = monitoredHotspotDictionary[hotspotID] as! Dictionary<String,AnyObject>
+            //print(questionArray)*/
+
             break
         default:
             break
         }
     }
-        
+    
 
 }

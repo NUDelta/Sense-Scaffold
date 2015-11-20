@@ -30,6 +30,11 @@
                                 <action selector="tempFetchQn" destination="AgC-eL-Hgc" id="28B-Kh-Fai"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="fetch instance" id="Xzc-Sb-tbL">
+                            <connections>
+                                <action selector="tmpFetchInstance" destination="AgC-eL-Hgc" id="WcR-AE-hfE"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="numHotspotsLabel" destination="zkk-jg-9OP" id="beO-a1-OdM"/>

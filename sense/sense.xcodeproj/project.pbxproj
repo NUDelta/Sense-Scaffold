@@ -113,6 +113,9 @@
 /* Begin PBXFileReference section */
 		932615021BCCA03000600A9B /* sense WatchKit App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sense WatchKit App-Bridging-Header.h"; sourceTree = "<group>"; };
 		932615031BCCA03000600A9B /* HotspotClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HotspotClass.swift; path = sense/HotspotClass.swift; sourceTree = "<group>"; };
+		9329FF931BFBB62200F35A0A /* sense.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = sense.entitlements; sourceTree = "<group>"; };
+		9329FF941BFBB64E00F35A0A /* sense WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sense WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		9329FF951BFBB65600F35A0A /* sense WatchKit App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "sense WatchKit App.entitlements"; sourceTree = "<group>"; };
 		937CF8AE1BD73DA2002DCBD3 /* GetInfoInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GetInfoInterfaceController.swift; path = "sense WatchKit Extension/GetInfoInterfaceController.swift"; sourceTree = SOURCE_ROOT; };
 		937CF8B11BD74CEF002DCBD3 /* AnswerInterfaceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerInterfaceController.swift; sourceTree = "<group>"; };
 		93D32E771BC049ED003840B8 /* sense.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sense.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -264,6 +267,7 @@
 		93D32E791BC049ED003840B8 /* sense */ = {
 			isa = PBXGroup;
 			children = (
+				9329FF931BFBB62200F35A0A /* sense.entitlements */,
 				93D32E7A1BC049ED003840B8 /* AppDelegate.swift */,
 				93D32E7C1BC049ED003840B8 /* ViewController.swift */,
 				93D32E7E1BC049ED003840B8 /* Main.storyboard */,
@@ -295,6 +299,7 @@
 		93D32EA31BC049ED003840B8 /* sense WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
+				9329FF951BFBB65600F35A0A /* sense WatchKit App.entitlements */,
 				93D32EA41BC049ED003840B8 /* Interface.storyboard */,
 				93D32EA71BC049ED003840B8 /* Assets.xcassets */,
 				93D32EA91BC049ED003840B8 /* Info.plist */,
@@ -305,6 +310,7 @@
 		93D32EB21BC049ED003840B8 /* sense WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				9329FF941BFBB64E00F35A0A /* sense WatchKit Extension.entitlements */,
 				937CF8AE1BD73DA2002DCBD3 /* GetInfoInterfaceController.swift */,
 				93D32EB51BC049ED003840B8 /* InterfaceController.swift */,
 				937CF8B11BD74CEF002DCBD3 /* AnswerInterfaceController.swift */,
@@ -446,6 +452,11 @@
 					93D32E761BC049ED003840B8 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 8ZYVJY572N;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					93D32E8A1BC049ED003840B8 = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -458,10 +469,20 @@
 					93D32E9E1BC049ED003840B8 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 8ZYVJY572N;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					93D32EAD1BC049ED003840B8 = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 8ZYVJY572N;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -716,6 +737,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "sense WatchKit Extension/sense WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -738,6 +760,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "sense WatchKit Extension/sense WatchKit Extension.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -761,6 +784,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "sense WatchKit App/sense WatchKit App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -784,6 +808,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "sense WatchKit App/sense WatchKit App.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -805,6 +830,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = sense/sense.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -824,6 +850,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = sense/sense.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

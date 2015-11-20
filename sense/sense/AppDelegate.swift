@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func triggerUserEnteredRegionNotification(region: CLRegion!) {
         //get region data
         print("entered region")
-        var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? [:]
+        var monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? [:]
         let hotspot = monitoredHotspotDictionary[region.identifier]
         guard let tag = hotspot!["tag"] as! String? else {return}
         let identifier = hotspot!["id"] as! String
@@ -92,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             notification.alertBody = "\(tag) detected with id \(identifier)"
             notification.soundName = "Default"
             notification.category = "INVESTIGATE_CATEGORY"
+            notification.userInfo = ["hotspotID":identifier]
             UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         }
     }

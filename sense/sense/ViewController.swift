@@ -22,8 +22,19 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
     @IBOutlet weak var debugText: UITextView!
     
     @IBAction func clearGeofences(sender: AnyObject) {
+        print("THIS GOT CALLED")
         stopMonitoringAllHotspots()
     }
+    
+    @IBAction func printMonitoredRegions(sender: AnyObject) {
+        let monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? [:]
+        //let monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? [:]
+        debugText.text = debugText.text + "\(monitoredHotspotDictionary)"
+        for region in appLocManager.monitoredRegions {
+            debugText.text = debugText.text + " " + region.identifier
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,9 +200,9 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                                 guard let arr = (reply.0) else { return }
                                 let retArr = (arr as! NSArray) as Array
                                 
-                                var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
-                                //reset dictionary
-                                //var monitoredHotspotDictionary = [String:Dictionary<String,AnyObject>]()
+                                var monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
+                                //var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
+                                
                                 
                                 for entry in retArr{
                                     let unwrappedEntry = entry as! Dictionary<String,AnyObject>
@@ -205,11 +216,11 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                                     self.debugText.text = self.debugText.text + "starting to monitor " + identifier
                                     self.startMonitoringHotspot(hotspot)
                                     monitoredHotspotDictionary[identifier] = unwrappedEntry
+                                    print(monitoredHotspotDictionary[identifier] as! Dictionary<String,AnyObject>)
                                 }
                                 
-                                monitoredHotspotDictionary["questionArr"] = arr
-                                NSUserDefaults.standardUserDefaults().setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
-                                
+                                //NSUserDefaults.standardUserDefaults().setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
+                                NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
                                 replyHandler(["missingInfo": arr ])
                             }
                         )
@@ -217,6 +228,50 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                         replyHandler(["msg": "Error in getting geopoint while fetching questions\(error)" ])
                     }
                 }
+            
+            case "fetchQuestionsForInstance":
+                guard let hotspotID = message["hotspotID"] as! String? else { return }
+                PFCloud.callFunctionInBackground("fetchQuestionsForInstance",
+                    withParameters: ["hotspotID" as NSObject:hotspotID as AnyObject],
+                    block: { reply in
+                        guard let arr = (reply.0) else { return }
+                        let retArr = (arr as! NSArray) as Array
+                        
+                        var monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
+                        //var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
+                        
+                        
+                        for entry in retArr{
+                            let unwrappedEntry = entry as! Dictionary<String,AnyObject>
+                            let latitude = unwrappedEntry["latitude"] as! Double
+                            let longitude = unwrappedEntry["longitude"] as! Double
+                            let identifier = unwrappedEntry["id"] as! String
+                            let tag = unwrappedEntry["tag"] as? String ?? ""
+                            let date = unwrappedEntry["date"] as! NSDate
+                            let hotspot = Hotspot(location: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), tag: tag, timeCreated: date, id: identifier)
+                            print (entry)
+                            self.debugText.text = self.debugText.text + "starting to monitor " + identifier
+                            self.startMonitoringHotspot(hotspot)
+                            monitoredHotspotDictionary[identifier] = unwrappedEntry
+                            print(monitoredHotspotDictionary[identifier] as! Dictionary<String,AnyObject>)
+                        }
+                        
+                        //NSUserDefaults.standardUserDefaults().setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
+                        NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
+                        replyHandler(["missingInfo": arr ])
+                    }
+                )
+
+            
+            case "printToIPhone":
+                let textToPrint = message["text"] as! String
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.debugText.text = self.debugText.text + textToPrint
+                })
+                replyHandler([
+                    "received": "yes"
+                    ])
+            
             default:
                 break
         }
@@ -251,6 +306,9 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                     appLocManager.stopMonitoringForRegion(circularRegion)
             }
         }
+        //reset dictionary in NSUserDefaults
+        NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.removeObjectForKey(savedHotspotsRegionKey)
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(savedHotspotsRegionKey)
     }
     
 
@@ -268,7 +326,8 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                         guard let arr = (reply.0) else { return }
                         let retArr = (arr as! NSArray) as Array
                         
-                        var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
+                        var monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
+                        //var monitoredHotspotDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey(savedHotspotsRegionKey) ?? Dictionary()
                         //reset dictionary
                         //var monitoredHotspotDictionary = [String:Dictionary<String,AnyObject>]()
                         
@@ -287,7 +346,8 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                             monitoredHotspotDictionary[identifier] = unwrappedEntry
                         }
                         monitoredHotspotDictionary["questionArr"] = arr
-                        NSUserDefaults.standardUserDefaults().setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
+                        NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
+                        //NSUserDefaults.standardUserDefaults().setObject(monitoredHotspotDictionary, forKey: savedHotspotsRegionKey)
                     }
                 )
             }else{

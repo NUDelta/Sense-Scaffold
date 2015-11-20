@@ -27,7 +27,7 @@ Parse.Cloud.define("fetchQuestions", function(request, response) {
   questionQuery.find({
 	  success: function(hotspotEntries) {
 	  	for(var i = 0; i < hotspotEntries.length; i++){
-	  		var questionDict = {}
+	  		var questionDict = {};
 	  		var entry = hotspotEntries[i];
 	  		var tag = entry.get("tag");
 	  		var infoDict = entry.get("info");
@@ -91,4 +91,53 @@ Parse.Cloud.afterSave('Hotspot', function(request, response) {
 	}
     // code here
 })
+
+
+//code for fetching specific instance:
+Parse.Cloud.define("fetchQuestionsForInstance", function(request, response) {
+	  var hotspotID = request.params.hotspotID;
+	  
+	  var questionArray = [];
+
+	  //creating query 
+	  var Hotspot = Parse.Object.extend("Hotspot");
+	  var questionQuery = new Parse.Query(Hotspot);
+	  
+	  questionQuery.get(hotspotID, {
+		  success: function(hotspot) {
+		    		var questionDict = {};
+			  		var tag = hotspot.get("tag");
+			  		var infoDict = hotspot.get("info");
+			  		var location = hotspot.get("location");
+			  		var latitude = location.latitude;
+			  		var longitude = location.longitude;
+			  		questionDict["id"]=hotspot.id;
+			  		questionDict["latitude"] = latitude;
+			  		questionDict["longitude"] = longitude;
+			  		questionDict["date"] = hotspot.get("createdAt");
+		 	  		if (tag == ""){
+		 	  			questionDict["tag"] = "What's here?";
+			  		}else {
+			  			if (infoDict !== undefined){
+			  				for (var infotype in infoDict) {
+							    if (infoDict.hasOwnProperty(infotype)) {
+							    	if (infoDict[infotype] == ""){
+							    		questionDict[infotype] = infotype + "?";  		
+							    	}else{
+							    		questionDict[infotype] = infoDict[infotype];
+							    	}
+							    }
+							}
+			  			}
+			  		}
+			  		questionArray.push(questionDict);
+			  		response.success(questionArray);
+		  },
+		  error: function(object, error) {
+		    // The object was not retrieved successfully.
+		    // error is a Parse.Error with an error code and message.
+		  }
+	 });
+
+});
 

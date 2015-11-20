@@ -4,13 +4,13 @@
             "body": "Test message",
             "title": "Optional title"
         },
-        "category": "myCategory"
+        "category": "INVESTIGATE_CATEGORY"
     },
     
     "WatchKit Simulator Actions": [
         {
-            "title": "First Button",
-            "identifier": "firstButtonAction"
+            "title": "Investigate",
+            "identifier": "INVESTIGATE_EVENT_IDENTIFIER"
         }
     ],
     
