@@ -12,14 +12,14 @@ GetInfoInterfaceController
   
 2. iPhone Code
 App Delegate
-  *This is where you set up notifications
+  * This is where you set up notifications
 ViewController
-  *This is where the Parse interactions happen
-  *main function is the session function, which deals with messages that are sent from the apple watch
-  *Also offers debugging tools like simulating a notification, printing to the iPhone app
+  * This is where the Parse interactions happen
+  * main function is the session function, which deals with messages that are sent from the apple watch
+  * Also offers debugging tools like simulating a notification, printing to the iPhone app
   
 3. Parse Cloud Code
-  *This is where you set up the questions that Parse asks about each hotspot. This code handles what happens when a user reports a hotspot.
+  * This is where you set up the questions that Parse asks about each hotspot. This code handles what happens when a user reports a hotspot.
   For instance, if a user reports that there is an infosession nearby, this is where you can decide what kinds of information you want Parse
   to fill in about that infosession
   
