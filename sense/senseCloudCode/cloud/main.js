@@ -40,7 +40,8 @@ Parse.Cloud.define("fetchQuestions", function(request, response) {
 	  		questionDict["date"] = entry.get("createdAt");
  	  		if (tag == ""){
  	  			questionDict["tag"] = "What's here?";
-	  		}else if (tag == "food"){
+	  		}else{
+	  			questionDict["tag"] = tag;
 	  			if (infoDict !== undefined){
 	  				for (var infotype in infoDict) {
 					    if (infoDict.hasOwnProperty(infotype)) {
@@ -80,7 +81,26 @@ Parse.Cloud.afterSave('Hotspot', function(request, response) {
 		  error: function(savedObject, error) {
 		  }
 		});
-	} else if ((infoDict == undefined) || (Object.keys(infoDict) == 0)){
+	} else if (tag == "music" && ( (infoDict == undefined) || (Object.keys(infoDict) == 0) )){
+		dict["genre"] = "";
+		savedObject.set("info", dict);
+		savedObject.save(null, {
+		  success: function(savedObject) {
+		  },
+		  error: function(savedObject, error) {
+		  }
+		});
+	} else if (tag == "infosession" && ( (infoDict == undefined) || (Object.keys(infoDict) == 0) )){
+		dict["company"] = "";
+		dict["positions"] = "";
+		savedObject.set("info", dict);
+		savedObject.save(null, {
+		  success: function(savedObject) {
+		  },
+		  error: function(savedObject, error) {
+		  }
+		});
+	}else if ((infoDict == undefined) || (Object.keys(infoDict) == 0)){
 		savedObject.set("info", dict);
 		savedObject.save(null, {
 		  success: function(savedObject) {
@@ -118,6 +138,7 @@ Parse.Cloud.define("fetchQuestionsForInstance", function(request, response) {
 		 	  		if (tag == ""){
 		 	  			questionDict["tag"] = "What's here?";
 			  		}else {
+			  			questionDict["tag"] = tag;
 			  			if (infoDict !== undefined){
 			  				for (var infotype in infoDict) {
 							    if (infoDict.hasOwnProperty(infotype)) {

@@ -74,9 +74,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         //get region data
         print("entered region")
         var monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? [:]
-        let hotspot = monitoredHotspotDictionary[region.identifier]
-        guard let tag = hotspot!["tag"] as! String? else {return}
-        let identifier = hotspot!["id"] as! String
+        let hotspotDict = monitoredHotspotDictionary[region.identifier]
+        let tag = hotspotDict!["tag"] as! String
+        let identifier = hotspotDict!["id"] as! String
         
         // Show an alert if application is active
         if UIApplication.sharedApplication().applicationState == .Active {
@@ -92,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             notification.alertBody = "\(tag) detected with id \(identifier)"
             notification.soundName = "Default"
             notification.category = "INVESTIGATE_CATEGORY"
-            notification.userInfo = ["hotspotID":identifier]
+            notification.userInfo = hotspotDict as? Dictionary
             UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         }
     }

@@ -18,21 +18,21 @@
                                 <action selector="reportFood" destination="AgC-eL-Hgc" id="ve2-2L-xmi"/>
                             </connections>
                         </button>
-                        <separator alignment="left" id="abR-Ah-I9r"/>
-                        <button width="1" alignment="left" title="Search" id="l7Y-Jf-Rrs">
+                        <button width="1" alignment="left" title="Info Session" id="8i0-DD-vQ2">
                             <connections>
-                                <action selector="searchLocations" destination="AgC-eL-Hgc" id="VJt-vo-O9Y"/>
+                                <action selector="reportInfoSession" destination="AgC-eL-Hgc" id="MlS-aK-B6c"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Music" id="Jrp-gp-sa7">
+                            <connections>
+                                <action selector="reportMusic" destination="AgC-eL-Hgc" id="lsE-EZ-i83"/>
+                            </connections>
+                        </button>
+                        <separator alignment="left" id="abR-Ah-I9r"/>
                         <label alignment="left" id="zkk-jg-9OP"/>
-                        <button width="1" alignment="left" title="fetch questions" id="xTg-8M-WI8">
+                        <button width="1" alignment="left" title="Sense Hotspots" id="xTg-8M-WI8">
                             <connections>
                                 <action selector="tempFetchQn" destination="AgC-eL-Hgc" id="28B-Kh-Fai"/>
-                            </connections>
-                        </button>
-                        <button width="1" alignment="left" title="fetch instance" id="Xzc-Sb-tbL">
-                            <connections>
-                                <action selector="tmpFetchInstance" destination="AgC-eL-Hgc" id="WcR-AE-hfE"/>
                             </connections>
                         </button>
                     </items>

@@ -100,6 +100,7 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
                 hotspot.saveInBackgroundWithBlock {
                     (success: Bool, error: NSError?) -> Void in
                     if (success) {
+                        
                         // The object has been saved.
                         replyHandler([
                             "objectID": hotspot.objectId as! AnyObject
@@ -279,8 +280,6 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
         return
     }
     
-    
-    
     func startMonitoringHotspot(hotspot: Hotspot){
         let region = CLCircularRegion(center: CLLocationCoordinate2D(latitude: hotspot.location.latitude, longitude: hotspot.location.longitude), radius: 10, identifier: hotspot.id)
         print(hotspot.location.latitude)
@@ -383,6 +382,33 @@ class ViewController: UIViewController,WCSessionDelegate,CLLocationManagerDelega
         debugText.text = debugText.text + " exited Region "
     }
 
+    @IBOutlet weak var objectIDTextField: UITextField!
+    
+    @IBAction func fakeNotif(sender: AnyObject) {
+        //debugText.text = debugText.text + objectIDTextField.text!
+        fakeTriggerUserEnteredRegionNotification(objectIDTextField.text!)
+    }
+    
+    //fake notification method
+    func fakeTriggerUserEnteredRegionNotification(regionId: String) {
+        var monitoredHotspotDictionary = NSUserDefaults.init(suiteName: "group.hotspotDictionary")?.dictionaryForKey(savedHotspotsRegionKey) ?? [:]
+        let hotspotDict = monitoredHotspotDictionary[regionId]
+        debugText.text = debugText.text + "\(hotspotDict)" + "here"
+        //guard let tag = hotspotDict!["tag"] as! String? else {return}
+        let tag = hotspotDict!["tag"] as! String
+        let identifier = hotspotDict!["id"] as! String
+        
+        // Otherwise present a local notification
+        let notification = UILocalNotification()
+        notification.alertBody = "\(tag) detected with id \(identifier)"
+        notification.soundName = "Default"
+        notification.category = "INVESTIGATE_CATEGORY"
+        notification.userInfo = hotspotDict as? Dictionary
+        notification.fireDate = NSDate().dateByAddingTimeInterval(5)
+        debugText.text = debugText.text + regionId
+    
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+    }
 
 }
 

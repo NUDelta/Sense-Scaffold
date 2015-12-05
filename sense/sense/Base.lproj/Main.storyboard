@@ -17,13 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DJm-J8-MCg">
-                                <rect key="frame" x="20" y="20" width="560" height="522"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DNu-vI-WIu">
                                 <rect key="frame" x="20" y="550" width="161" height="30"/>
                                 <animations/>
@@ -40,39 +33,105 @@
                                     <action selector="clearGeofences:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0T-Xm-mRJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHJ-QI-q5r">
+                                <rect key="frame" x="211" y="20" width="34" height="30"/>
+                                <animations/>
+                                <state key="normal" title="Notif"/>
+                                <connections>
+                                    <action selector="fakeNotif:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DE7-af-nMB"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m7J-go-9SZ">
+                                <rect key="frame" x="67" y="19" width="100" height="30"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="oPU-oE-PMR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DJm-J8-MCg">
+                                <rect key="frame" x="20" y="57" width="560" height="485"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="36b-Si-UWC" secondAttribute="trailing" id="1Ya-BL-Zav"/>
-                            <constraint firstItem="DJm-J8-MCg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="CMk-Gc-fW8"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="leading" secondItem="m7J-go-9SZ" secondAttribute="trailing" constant="119" id="5bV-tm-gQf"/>
+                            <constraint firstItem="DJm-J8-MCg" firstAttribute="top" secondItem="YHJ-QI-q5r" secondAttribute="bottom" constant="7" id="CAQ-cv-Bhk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DNu-vI-WIu" secondAttribute="bottom" constant="20" id="CZt-SQ-i4k"/>
                             <constraint firstItem="36b-Si-UWC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="222" id="DxC-KL-7ce"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="leading" secondItem="m7J-go-9SZ" secondAttribute="trailing" constant="44" id="EAa-By-Lhd"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="263" id="FJc-AW-vjw"/>
+                            <constraint firstItem="DNu-vI-WIu" firstAttribute="top" secondItem="YHJ-QI-q5r" secondAttribute="bottom" constant="8" id="HMu-mm-xbk"/>
+                            <constraint firstItem="36b-Si-UWC" firstAttribute="leading" secondItem="YHJ-QI-q5r" secondAttribute="trailing" constant="141" id="Ho4-lk-cKn"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="YHJ-QI-q5r" secondAttribute="leading" id="IFF-6H-z7u"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="YHJ-QI-q5r" secondAttribute="bottom" constant="20" id="JwO-l3-oDn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YHJ-QI-q5r" secondAttribute="trailing" constant="263" id="Kdj-p5-tZu"/>
                             <constraint firstItem="DJm-J8-MCg" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="KmC-Of-H2V"/>
+                            <constraint firstItem="m7J-go-9SZ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-1" id="MIw-z6-L3Y"/>
+                            <constraint firstItem="DJm-J8-MCg" firstAttribute="top" secondItem="m7J-go-9SZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Nxc-fx-fRQ"/>
+                            <constraint firstItem="DJm-J8-MCg" firstAttribute="top" secondItem="YHJ-QI-q5r" secondAttribute="bottom" constant="7" id="PVL-SO-7uk"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Sb6-CG-yDB"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="YHJ-QI-q5r" secondAttribute="bottom" constant="58" id="SvL-r5-WqK"/>
                             <constraint firstItem="DJm-J8-MCg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aOq-1z-7Dh"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="leading" secondItem="DNu-vI-WIu" secondAttribute="trailing" constant="102" id="bOO-Gg-x5r"/>
                             <constraint firstItem="36b-Si-UWC" firstAttribute="leading" secondItem="DNu-vI-WIu" secondAttribute="trailing" constant="8" id="bnq-RQ-Yhg"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="YHJ-QI-q5r" secondAttribute="leading" id="dbJ-5U-uGv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="DNu-vI-WIu" secondAttribute="leading" id="ef9-Po-WLm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="36b-Si-UWC" secondAttribute="trailing" id="goQ-gN-dg3"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="YHJ-QI-q5r" secondAttribute="bottom" constant="20" id="k1v-5J-xlE"/>
                             <constraint firstItem="DJm-J8-MCg" firstAttribute="leading" secondItem="DNu-vI-WIu" secondAttribute="trailing" constant="-214" id="kn8-jW-pja"/>
+                            <constraint firstItem="m7J-go-9SZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="47" id="lA2-1K-B2N"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="DNu-vI-WIu" secondAttribute="bottom" constant="20" id="lYO-qa-RkT"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="loA-kI-uui"/>
+                            <constraint firstItem="m7J-go-9SZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="47" id="lzy-8p-6KA"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="36b-Si-UWC" secondAttribute="bottom" constant="20" id="o6C-Pc-Rqg"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="leading" secondItem="DNu-vI-WIu" secondAttribute="trailing" constant="96" id="obd-db-Abr"/>
                             <constraint firstItem="DNu-vI-WIu" firstAttribute="top" secondItem="DJm-J8-MCg" secondAttribute="bottom" constant="8" id="puc-SP-Kuo"/>
                             <constraint firstAttribute="bottom" secondItem="DJm-J8-MCg" secondAttribute="bottom" constant="20" symbolic="YES" id="saN-ag-Avt"/>
+                            <constraint firstItem="YHJ-QI-q5r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="uBK-vj-1Ha"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="36b-Si-UWC" secondAttribute="bottom" constant="20" id="xgZ-q4-wO0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="CAQ-cv-Bhk"/>
                                 <exclude reference="kn8-jW-pja"/>
                                 <exclude reference="saN-ag-Avt"/>
+                                <exclude reference="MIw-z6-L3Y"/>
+                                <exclude reference="lA2-1K-B2N"/>
+                                <exclude reference="5bV-tm-gQf"/>
+                                <exclude reference="FJc-AW-vjw"/>
+                                <exclude reference="IFF-6H-z7u"/>
+                                <exclude reference="Kdj-p5-tZu"/>
+                                <exclude reference="Sb6-CG-yDB"/>
+                                <exclude reference="bOO-Gg-x5r"/>
+                                <exclude reference="dbJ-5U-uGv"/>
+                                <exclude reference="obd-db-Abr"/>
+                                <exclude reference="uBK-vj-1Ha"/>
+                                <exclude reference="HMu-mm-xbk"/>
                                 <exclude reference="CZt-SQ-i4k"/>
+                                <exclude reference="JwO-l3-oDn"/>
+                                <exclude reference="SvL-r5-WqK"/>
+                                <exclude reference="k1v-5J-xlE"/>
                                 <exclude reference="o6C-Pc-Rqg"/>
                                 <exclude reference="DxC-KL-7ce"/>
+                                <exclude reference="Ho4-lk-cKn"/>
                                 <exclude reference="bnq-RQ-Yhg"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="debugText" destination="DJm-J8-MCg" id="pYi-7f-46T"/>
+                        <outlet property="objectIDTextField" destination="m7J-go-9SZ" id="pnu-oO-XbX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

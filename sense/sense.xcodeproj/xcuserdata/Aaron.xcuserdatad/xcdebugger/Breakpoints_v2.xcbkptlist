@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "reportLocation()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470917289.328476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "fetchQuestions()"
             landmarkType = "5">
             <Locations>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470917289.328476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "162"
-            endingLineNumber = "162"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
             landmarkName = "requestiPhoneSearch(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense/ViewController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "getNearbyHotspots()"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470917289.328476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "fetchQuestions()"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense/ViewController.swift"
-            timestampString = "469481561.186196"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
             landmarkName = "session(_:didReceiveMessage:replyHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
             landmarkName = "reportLocation()"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense/ViewController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "266"
-            endingLineNumber = "266"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
             landmarkName = "session(_:didReceiveMessage:replyHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense/ViewController.swift"
-            timestampString = "469481561.186196"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "session(_:didReceiveMessage:replyHandler:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,11 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/GetInfoInterfaceController.swift"
-            timestampString = "469402058.680877"
+            timestampString = "470916617.633954"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "awakeWithContext(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
             landmarkName = "awakeWithContext(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -250,11 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486464.185807"
+            timestampString = "470915970.653305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "willActivate()"
             landmarkType = "5">
          </BreakpointContent>
@@ -266,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486503.105143"
+            timestampString = "470917289.328476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
             landmarkName = "fetchQuestionsForInstance(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "sense WatchKit Extension/InterfaceController.swift"
-            timestampString = "469486518.207916"
+            timestampString = "470917289.328476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
             landmarkName = "fetchQuestionsForInstance(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -304,6 +304,70 @@
             startingLineNumber = "15"
             endingLineNumber = "15"
             landmarkName = "applicationDidFinishLaunching()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sense WatchKit Extension/GetInfoInterfaceController.swift"
+            timestampString = "470916617.633954"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
+            landmarkName = "awakeWithContext(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sense WatchKit Extension/GetInfoInterfaceController.swift"
+            timestampString = "470916617.633954"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
+            landmarkName = "awakeWithContext(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sense WatchKit Extension/GetInfoInterfaceController.swift"
+            timestampString = "470916617.633954"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
+            landmarkName = "awakeWithContext(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sense WatchKit Extension/GetInfoInterfaceController.swift"
+            timestampString = "470916718.706933"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "question2ButtonAction()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

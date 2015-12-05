@@ -31,7 +31,7 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
     @IBOutlet var numHotspotsLabel: WKInterfaceLabel!
     
     @IBAction func reportFood() {
-        if(mostRecentLocationObjectID != ""){
+       /* if(mostRecentLocationObjectID != ""){
             let message = ["command":"updateObject", "objectID": mostRecentLocationObjectID, "tag": "food"]
             print(message)
             watchSession.sendMessage(message, replyHandler: {replyDictionary in
@@ -40,9 +40,19 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
                 }, errorHandler: {error in
                     print("error in updating object")})
         }else{
-            mostRecentTag = "food"
-            reportLocation()
-        }
+        }*/
+        mostRecentTag = "food"
+        reportLocation()
+    }
+    
+    @IBAction func reportInfoSession() {
+        mostRecentTag = "infosession"
+        reportLocation()
+    }
+    
+    @IBAction func reportMusic() {
+        mostRecentTag = "music"
+        reportLocation()
     }
     
     @IBAction func searchLocations() {
@@ -133,6 +143,7 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         isRequestingLocation = false
         isSearchingLocations = false
         //reportLocation()
+        fetchQuestionsInBackground();
         printToIPhone("will activate method called")
     }
 
@@ -149,6 +160,7 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         watchSession.sendMessage(message as! [String : AnyObject], replyHandler: {replyDictionary in
                 print("reply handler called")
                 guard let entryID = replyDictionary["objectID"] as? String else {return}
+                self.fetchQuestionsForInstance(entryID)
                 print(entryID)
                 self.mostRecentLocationObjectID = entryID
             }, errorHandler: {error in
@@ -178,6 +190,16 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
             //print((questionArray[0]["duration"])!)
             self.pushControllerWithName("getInfoController", context: questionArray)
             print("reply handler called for fetch questions")
+            }, errorHandler: {error in
+                print("error in fetching questions \(error)")})
+    }
+    
+    func fetchQuestionsInBackground(){
+        let message = ["command": "fetchQuestions"]
+        print(message)
+        watchSession.sendMessage(message, replyHandler: {replyDictionary in
+            print(replyDictionary)
+            print("reply handler called for fetch questions in background")
             }, errorHandler: {error in
                 print("error in fetching questions \(error)")})
     }
@@ -260,14 +282,14 @@ class InterfaceController: WKInterfaceController,CLLocationManagerDelegate,WCSes
         case "INVESTIGATE_EVENT_IDENTIFIER":
             //print("triggered watch notification with investigate action")
             
-            let hotspotID = localNotification.userInfo!["hotspotID"] as! String
+            let hotspotID = localNotification.userInfo!["id"] as! String
             printToIPhone("handle action with identifier with \(hotspotID)")
             
             //watchSession.delegate=self
             //watchSession.activateSession()
             //fetchQuestionsForInstance(hotspotID)
             
-            presentControllerWithName("getInfoController", context: [])
+            presentControllerWithName("getInfoController", context: [localNotification.userInfo!])
             //printToIPhone("handling notification for \(hotspotID)")
             //fetchQuestionsForInstance(hotspotID)
             /*

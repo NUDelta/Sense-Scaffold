@@ -25,7 +25,7 @@ class GetInfoInterfaceController: WKInterfaceController,WCSessionDelegate {
     var questionArr = [String]()
     var incompleteFieldArr = [String]()
     var completedInfoDict = [String:String]()
-
+    var tag = ""
     // session for communicating with iPhone
     let watchSession = WCSession.defaultSession()
     
@@ -34,17 +34,40 @@ class GetInfoInterfaceController: WKInterfaceController,WCSessionDelegate {
     @IBAction func question1ButtonAction() {
         //pushControllerWithName("QuestionController", context: question1Title)
         var answerArray:[String]
-        switch(question1Title){
-        case("What's here?"):
-            answerArray = ["food", "career fair", "concert"]
-        case("duration?"):
-            answerArray = ["0.5 hours", "1 hour", "2 hours"]
-        case("type?"):
-            answerArray = ["pizza", "bagels", "coffee"]
+        switch(tag){
+        case("food"):
+            switch(question1Title){
+            case("What's here?"):
+                answerArray = ["food", "career fair", "concert"]
+            case("duration?"):
+                answerArray = ["0.5 hours", "1 hour", "2 hours"]
+            case("type?"):
+                answerArray = ["pizza", "bagels", "coffee"]
+            default:
+                answerArray = []
+                break
+            }
+        case("infosession"):
+            switch(question1Title){
+            case("company?"):
+                answerArray = ["Google", "Microsoft", "Facebook"]
+            case("positions?"):
+                answerArray = ["internship", "fulltime"]
+            default:
+                answerArray = []
+                break
+            }
+        case("music"):
+            switch(question1Title){
+            case("genre?"):
+                answerArray = ["jazz", "classical", "pop"]
+            default:
+                answerArray = []
+                break
+            }
         default:
             answerArray = []
-            break
-            
+            break;
         }
         handleUserAnswer(answerArray,index: 0);
     }
@@ -52,17 +75,40 @@ class GetInfoInterfaceController: WKInterfaceController,WCSessionDelegate {
     @IBAction func question2ButtonAction() {
         //pushControllerWithName("QuestionController", context: question2Title)
         var answerArray:[String]
-        switch(question2Title){
-        case("What's here?"):
-            answerArray = ["food", "career fair", "concert"]
-        case("duration?"):
-            answerArray = ["0.5 hours", "1 hour", "2 hours"]
-        case("type?"):
-            answerArray = ["pizza", "bagels", "coffee"]
+        switch(tag){
+        case("food"):
+            switch(question2Title){
+            case("What's here?"):
+                answerArray = ["food", "career fair", "concert"]
+            case("duration?"):
+                answerArray = ["0.5 hours", "1 hour", "2 hours"]
+            case("type?"):
+                answerArray = ["pizza", "bagels", "coffee"]
+            default:
+                answerArray = []
+                break
+            }
+        case("infosession"):
+            switch(question2Title){
+            case("company?"):
+                answerArray = ["Google", "Microsoft", "Facebook"]
+            case("positions?"):
+                answerArray = ["internship", "fulltime"]
+            default:
+                answerArray = []
+                break
+            }
+        case("music"):
+            switch(question2Title){
+            case("genre?"):
+                answerArray = ["jazz", "classical", "pop"]
+            default:
+                answerArray = []
+                break
+            }
         default:
             answerArray = []
-            break
-            
+            break;
         }
         handleUserAnswer(answerArray,index: 1);
     }
@@ -70,21 +116,47 @@ class GetInfoInterfaceController: WKInterfaceController,WCSessionDelegate {
     @IBAction func question3ButtonAction() {
         //pushControllerWithName("QuestionController", context: question3Title)
         var answerArray:[String]
-        switch(question3Title){
-        case("What's here?"):
-            answerArray = ["food", "career fair", "concert"]
-        case("duration?"):
-            answerArray = ["0.5 hours", "1 hour", "2 hours"]
-        case("type?"):
-            answerArray = ["pizza", "bagels", "coffee"]
+        
+        switch(tag){
+        case("food"):
+            switch(question3Title){
+            case("What's here?"):
+                answerArray = ["food", "career fair", "concert"]
+            case("duration?"):
+                answerArray = ["0.5 hours", "1 hour", "2 hours"]
+            case("type?"):
+                answerArray = ["pizza", "bagels", "coffee"]
+            default:
+                answerArray = []
+                break
+            }
+        case("infosession"):
+            switch(question3Title){
+            case("company?"):
+                answerArray = ["Google", "Microsoft", "Facebook"]
+            case("positions?"):
+                answerArray = ["internship", "fulltime"]
+            default:
+                answerArray = []
+                break
+            }
+        case("music"):
+            switch(question3Title){
+            case("genre?"):
+                answerArray = ["jazz", "classical", "pop"]
+            default:
+                answerArray = []
+                break
+            }
         default:
             answerArray = []
-            break
-            
+            break;
         }
+        
         
         handleUserAnswer(answerArray,index: 2);
     }
+    
     
     func handleUserAnswer(answerArray : [String], index : Int){
         presentTextInputControllerWithSuggestions(answerArray, allowedInputMode: WKTextInputMode.Plain
@@ -142,10 +214,11 @@ class GetInfoInterfaceController: WKInterfaceController,WCSessionDelegate {
         }
         
         let identifier = dictEntry["id"] as! String
+        
         hotspotIDLabel.setText(identifier)
         hotspotID = identifier
-        
-
+        print(dictEntry)
+        tag = dictEntry["tag"] as! String
         
         for (field, entry) in dictEntry{
             if (field != "latitude" && field != "longitude" && field != "date" && field != "id"){

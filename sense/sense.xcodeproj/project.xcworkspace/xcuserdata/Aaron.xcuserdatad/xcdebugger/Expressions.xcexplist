@@ -18,5 +18,16 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "GetInfoInterfaceController.question2ButtonAction() -&gt; ():GetInfoInterfaceController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "GetInfoInterfaceController.awakeWithContext(AnyObject?) -&gt; ():GetInfoInterfaceController.swift">
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
